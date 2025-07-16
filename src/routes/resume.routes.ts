@@ -4,7 +4,8 @@ import Router from 'express'
 import { uploadResume } from '../controllers/resume.controller'
 
 
-
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 const router = Router()
 

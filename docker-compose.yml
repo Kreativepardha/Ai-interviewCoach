@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: ai-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: bunuser
+      POSTGRES_PASSWORD: bunpass
+      POSTGRES_DB: interviewai
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    container_name: ai-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+volumes:
+  pgdata:
+  redisdata:
